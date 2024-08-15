@@ -1,0 +1,1 @@
+export const BaseURL = process.env.SERVER_BASE_URL;
