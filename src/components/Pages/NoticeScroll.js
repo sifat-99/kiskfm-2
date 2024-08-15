@@ -2,24 +2,25 @@ import React, { useState, useEffect } from "react";
 
 const NoticeSlider = ({ notices }) => {
   const [index, setIndex] = useState(0);
+  
+  // Create a duplicated list to enable infinite scroll effect
+  const duplicatedNotices = [...notices, ...notices];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prevIndex) =>
-        prevIndex === notices.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 20); // Adjust the speed here (e.g., 3000ms for 3 seconds)
+      setIndex((prevIndex) => (prevIndex === duplicatedNotices.length - 1 ? 0 : prevIndex + 1));
+    }, 3000); // Adjust speed here (e.g., 3000ms for 3 seconds)
 
     return () => clearInterval(interval);
-  }, [notices.length]);
+  }, [duplicatedNotices.length]);
 
   return (
-    <div className="overflow-hidden h-64">
+    <div className="overflow-hidden h-64 relative">
       <div
-        className="transition-transform ease-in-out duration-1000"
-        style={{ transform: `translateY(-${index * 100}%)` }}
+        className="transition-transform ease-in-out duration-3000"
+        style={{ transform: `translateY(-${index * 100 / duplicatedNotices.length}%)` }}
       >
-        {notices.map((notice, idx) => (
+        {duplicatedNotices.map((notice, idx) => (
           <div
             key={idx}
             className="h-20 flex items-start justify-start bg-transparent"
@@ -43,7 +44,13 @@ const ScrollNotice = () => {
 
   return (
     <main className="p-4 h-96">
-      <h1 className="text-center text-xl mb-4">Notice Board</h1>
+      <div className="flex items-center justify-between gap-4 mb-2">
+      <button className="text-xl">Notice Board</button>
+      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        View All
+      </button>
+      </div>
+      <hr className="border-2 border-black mb-2"/>
       <NoticeSlider notices={notices} />
     </main>
   );
