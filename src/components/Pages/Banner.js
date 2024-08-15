@@ -6,7 +6,7 @@ import ScrollNotice from './NoticeScroll';
 
 const Banner = () => {
   return (
-    <div className='flex justify-between items-center'>
+    <div className='flex flex-col lg:flex-row justify-between items-center'>
       <CarouselDefault />
       <ScrollNotice />
     </div>
