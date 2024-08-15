@@ -1,1 +1,2 @@
-export const BaseURL = process.env.SERVER_BASE_URL;
+export const BaseURL = "https://kiskfm.vercel.app";
+// export const BaseURL = "http://localhost:3000";
