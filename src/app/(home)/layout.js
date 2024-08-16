@@ -1,5 +1,3 @@
-
-
 import Navbar from "@/components/Navbar/Navbar";
 import "../globals.css";
 import { MenuBar } from "@/components/Navbar/MenuBar";

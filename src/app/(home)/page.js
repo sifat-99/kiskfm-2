@@ -1,7 +1,7 @@
 "use client";
-import Banner from "@/components/Pages/Banner";
-import { CarouselDefault } from "@/components/Pages/Carousel";
 /* eslint-disable @next/next/no-img-element */
+import Banner from "@/components/Pages/Banner";
+import MapSection from "@/components/Pages/MapSection";
 
 import Running_Banner from "@/components/Pages/Marquee";
 import { BaseURL } from "@/utils/constant";
@@ -29,7 +29,8 @@ const Home = () => {
   return (
     <main className=" px-4 md:px-6 lg:px-20">
       <Running_Banner />
-     <Banner />
+      <Banner />
+      <MapSection />
     </main>
   );
 };
